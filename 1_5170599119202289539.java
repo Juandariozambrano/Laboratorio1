@@ -4,9 +4,6 @@ import java.util.Scanner;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.FileReader;
-import java.lang.*;
-import java.util.Stack;
-import java.util.Queue;
 
  abstract class Group {
     protected List <PocketMonster> pocketMonster;
