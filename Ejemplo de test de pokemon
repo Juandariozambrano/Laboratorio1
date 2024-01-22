@@ -1,27 +1,124 @@
-Ejemplo de un test de enfrentamiento de 2 pokemones 
+Ejemplo de un test de enfrentamiento de pokemones 
 
-import unittest
+Aquí hay un ejemplo de cómo podría crear una prueba simple 
+para una batalla Pokémon usando pilas (para simular una baraja de cartas) y colas (para simular una línea de Pokémon esperando para luchar) 
+en Java:
 
-class PokemonTest(unittest.TestCase):
-    def test_pokemon_battle(self):
-        # Create two Pokemon objects
-        pikachu = Pokemon('Pikachu')
-        charizard = Pokemon('Charizard')
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Stack;
 
-        # Add moves to their move queues
-        pikachu.add_move('Thunderbolt')
-        pikachu.add_move('Quick Attack')
-        charizard.add_move('Flamethrower')
-        charizard.add_move('Dragon Claw')
+class Pokemon {
+    private String name;
+    private int attackPower;
 
-        # Run the battle simulation
-        battle = Battle(pikachu, charizard)
-        battle.simulate()
+    public Pokemon(String name, int attackPower) {
+        this.name = name;
+        this.attackPower = attackPower;
+    }
 
-        # Check that the battle results are as expected
-        self.assertEqual(battle.winner, pikachu)
-        self.assertEqual(battle.loser, charizard)
+    public String getName() {
+        return name;
+    }
 
-# Run the tests
-if __name__ == '__main__':
-    unittest.main()
+    public int getAttackPower() {
+        return attackPower;
+    }
+
+    @Override
+    public String toString() {
+        return "Pokemon{" +
+                "name='" + name + '\'' +
+                ", attackPower=" + attackPower +
+                '}';
+    }
+}
+
+class Pokedex {
+    private Stack<Pokemon> deck;
+    private Queue<Pokemon> line;
+
+    public Pokedex() {
+        this.deck = new Stack<>();
+        this.line = new LinkedList<>();
+    }
+
+    public void addPokemonToDeck(Pokemon pokemon) {
+        deck.push(pokemon);
+    }
+
+    public void addPokemonToLine(Pokemon pokemon) {
+        line.add(pokemon);
+    }
+
+    public Pokemon getNextPokemonFromDeck() {
+        return deck.pop();
+    }
+
+    public Pokemon getNextPokemonFromLine() {
+        return line.poll();
+    }
+
+    public int getDeckSize() {
+        return deck.size();
+    }
+
+    public int getLineSize() {
+        return line.size();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Create a new Pokedex
+        Pokedex pokedex = new Pokedex();
+
+        // Add some Pokemon to the Pokedex
+        pokedex.addPokemonToDeck(new Pokemon("Pikachu", 50));
+        pokedex.addPokemonToDeck(new Pokemon("Charmander", 60));
+        pokedex.addPokemonToDeck(new Pokemon("Squirtle", 40));
+
+        pokedex.addPokemonToLine(new Pokemon("Bulbasaur", 70));
+        pokedex.addPokemonToLine(new Pokemon("Jigglypuff", 30));
+
+        // Start the battle
+        while (pokedex.getDeckSize() > 0 && pokedex.getLineSize() > 0) {
+            // Get the next Pokemon from the deck and line
+            Pokemon deckPokemon = pokedex.getNextPokemonFromDeck();
+            Pokemon linePokemon = pokedex.getNextPokemonFromLine();
+
+            System.out.println("Battle between " + deckPokemon.getName() + " and " + linePokemon.getName());
+
+            // Determine the winner based on attack power
+            if (deckPokemon.getAttackPower() > linePokemon.getAttackPower()) {
+                System.out.println(deckPokemon.getName() + " wins!");
+            } else {
+                System.out.println(linePokemon.getName() + " wins!");
+            }
+        }
+
+        // Check if there are any remaining Pokemon in the deck or line
+        if (pokedex.getDeckSize() > 0) {
+            System.out.println("All Pokemon in the line have been defeated. The remaining Pokemon in the deck are: ");
+            for (Pokemon pokemon : pokedex.getDeck()) {
+                System.out.println(pokemon.getName());
+            }
+        } else if (pokedex.getLineSize() > 0) {
+            System.out.println("All Pokemon in the deck have been defeated. The remaining Pokemon in the line are: ");
+            for (Pokemon pokemon : pokedex.getLine()) {
+                System.out.println(pokemon.getName());
+            }
+        } else {
+            System.out.println("The battle is over and all Pokemon have been defeated.");
+        }
+    }
+}
+
+Este código crea una clase con un nombre y un poder de ataque, 
+así como una clase que tiene una pila (para simular una baraja de cartas)
+y una cola (para simular una línea de Pokémon esperando para luchar).
+La clase tiene métodos para agregar Pokémon a la baraja y la línea, así como métodos
+para obtener el próximo Pokémon de la baraja y la línea. El método principal crea un nuevo ,
+agrega algunos Pokémon a la baraja y la línea, y luego comienza la batalla obteniendo repetidamente el siguiente Pokémon
+de la baraja y la línea y determinando el ganador en función del poder de ataque. El código también comprueba si quedan 
+Pokémon en la baraja o en la línea una vez finalizada la batalla.
