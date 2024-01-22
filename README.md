@@ -8,6 +8,8 @@ datos del tipo pocketmonster, en dos equipos, uno en pilas cuya clase abstracta 
  Para la pila, se dio uso de interface que especifique los metodos que usaremos en la classe stack, una vez alli declaramos la clase abstracta (para que pueda implementar interface) Stack, la cual tendra entre sus datos privados, una pila que llamaremos previa y el tipo de dato que manejara sera del topo PocketMonster que llamaremos <P>, una vez declara las variables tendran los metodos especificados en el interface, Pop para sacar el dato que este en el tope de la pila, push que inserte el dato a la pila, peek que muestre lo que esta al tope de pila, el isEmpty busca verificar con True o False si la pila esta vacia, size para que muestre el tamaño de la pila.
 
  En la clase Queue buscara crear una cola que pueda almacenar y remover elementos en la cola, Enqueue y dequeue respectivamente, mostrarlos y sacar el elemento mas viejo de la cola queueFront.
+ 
+Por otra parte para la ejecucion del programa fue usado el Visual studio code. 
 
 Juan Zambrano
 CI: 25.852.929
