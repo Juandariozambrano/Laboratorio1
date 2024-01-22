@@ -1,0 +1,27 @@
+Ejemplo de un test de enfrentamiento de 2 pokemones 
+
+import unittest
+
+class PokemonTest(unittest.TestCase):
+    def test_pokemon_battle(self):
+        # Create two Pokemon objects
+        pikachu = Pokemon('Pikachu')
+        charizard = Pokemon('Charizard')
+
+        # Add moves to their move queues
+        pikachu.add_move('Thunderbolt')
+        pikachu.add_move('Quick Attack')
+        charizard.add_move('Flamethrower')
+        charizard.add_move('Dragon Claw')
+
+        # Run the battle simulation
+        battle = Battle(pikachu, charizard)
+        battle.simulate()
+
+        # Check that the battle results are as expected
+        self.assertEqual(battle.winner, pikachu)
+        self.assertEqual(battle.loser, charizard)
+
+# Run the tests
+if __name__ == '__main__':
+    unittest.main()
