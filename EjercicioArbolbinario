@@ -1,0 +1,129 @@
+Código Java para un árbol binario de búsqueda.
+
+import java.util*;
+import java.io*;
+
+public class arbolbinario {
+    private class nodoArbol {
+        private arbolbinario hojader;
+        private arbolbinario hojaizq;
+        private int dato;
+        private void nodoArbol (){
+            hojader = null;
+            hojaizq = null;
+            dato = 0;
+        }
+    }
+    public nodoArbol raiz;
+    public void arbolbinario (){
+        nodoArbol raiz = new nodoArbol ();
+    }
+    public boolean esVacio (){
+        return ( raiz == null);
+    }
+    public void insertar ( int a){
+        if ( esVacio ()) {
+            nodoArbol nuevo = new nodoArbol ();
+            nuevo. dato = a;
+            nuevo. hd = new arbolbinario ();
+            nuevo. hi = new arbolbinario ();
+            raiz = nuevo;
+        } else {
+            if ( a > raiz. dato) {
+                ( raiz. hojader). insertar ( a);
+            }
+            if ( a < raiz. dato){
+                ( raiz. hojaizq). insertar ( a);
+            }
+        }
+    }
+    public void preOrder (){
+        if (! esVacio ()) {
+            System. out. print ( raiz. dato + \", \" );
+            raiz. hojaizq. preOrder ();
+            raiz. hojader. preOrder ();
+        }
+    }
+    public void inOrder (){
+        if (! esVacio ()) {
+            raiz. hojaizq. inOrder ();
+            System. out. print ( raiz. dato + \", \" );
+            raiz. hojader. inOrder ();
+        }
+    }
+    public void posOrder (){
+        if (! esVacio ()) {
+            raiz. hojader. posOrder ();
+            raiz. hojaizq. posOrder ();
+            System. out. print ( raiz. dato + \", \" );
+        }
+    }
+    public arbolbinario buscar ( int a){
+        arbolbinario arbolito = null;
+        if (! esVacio ()) {
+            if ( a == raiz. dato) {
+                return this;
+            } else {
+                if ( a < raiz. dato) {
+                    arbolito = raiz. hojaizq. buscar ( a);
+                } else {
+                    arbolito = raiz. hojader. buscar ( a);
+                }
+            }
+        }
+        return arbolito;
+    }
+    public boolean existe ( int a){
+        if (! esVacio ()) {
+            if ( a == raiz. dato) {
+                return true;
+            } else {
+                if ( a < raiz. dato) {
+                    raiz. hojaizq. existe ( a);
+                } else {
+                    raiz. hojader. existe ( a);
+                }
+            }
+        }
+        return false;
+    }
+    public int cantidad (){
+        if ( esVacio ()) {
+            return 0;
+        } else {
+            return ( 1 + raiz. hojader. cantidad () + raiz. hojaizq. cantidad ());
+        }
+    }
+    public int altura () {
+        if ( esVacio ()) {
+            return 0;
+        } else {
+            return ( 1 + Math. max ((( raiz. hojaizq). altura ()), (( raiz. hojader). altura ())));
+        }
+    }
+    public int buscarMin () {
+        abb arbolActual = this;
+        while ( ! arbolActual. raiz. hojaizq. esVacio () ) {
+            arbolActual = arbolActual. raiz. hojaizq;
+        }
+        int devuelvo = arbolActual. raiz. dato;
+        arbolActual. raiz = null;
+        return devuelvo;
+    }
+    public int buscarMan () {
+        abb arbolActual = this;
+        while ( ! arbolActual. raiz. hojader. esVacio () ) {
+            arbolActual = arbolActual. raiz. hojader;
+        }
+        int devuelvo = arbolActual. raiz. dato;
+        arbolActual. raiz = null;
+        return devuelvo;
+    }
+    public boolean esHoja () {
+        boolean hoja = false;
+        if ( ( raiz. hojaizq). esVacio () && ( raiz. hojader). esVacio () ) {
+            hoja = true;
+        }
+        return hoja;
+    }
+}
