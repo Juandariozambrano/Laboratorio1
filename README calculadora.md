@@ -36,6 +36,6 @@ Para realizar los tests, se debe llamar a la clase Calculadora con el programa
 
 //El archivo test1.output contendrá los resultados esperados para cada expresión matemática en test1.input:
 //  El archivo test1.output
-//  2+3*4=20
-//  5-2/1=3
-//  10*2+3=23
+//  2 + 3 * 4 = 20
+//  5 - 2 / 1 = 3
+//  10 * 2 + 3 = 23
