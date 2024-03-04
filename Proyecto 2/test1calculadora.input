@@ -1,0 +1,4 @@
+//El archivo de test1.input llevara las siguientes expresiones matematicas:
+    2 + 3 * 4
+    5 - 2 / 1
+    10 * 2 + 3
