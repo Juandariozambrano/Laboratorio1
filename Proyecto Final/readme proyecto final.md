@@ -2,8 +2,8 @@
 
 # Grupo conformado por:
 
-Juan Zambrano. C.I: 25.852.929
-David Rodriguez. C.I: 26.009.819
+Juan Zambrano. C.I: 25.852.929.
+David Rodriguez. C.I: 26.009.819.
 
 # Pregunta 1 Teorica con justificacion.
 
